@@ -1,5 +1,6 @@
 package com.example.exampub.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class Order {
     private int amount;
     private double price;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fk_user_id")
     private User user;

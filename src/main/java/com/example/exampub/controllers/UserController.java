@@ -20,13 +20,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+    public ResponseEntity<?> getUserById(@PathVariable String id) {
         try {
-            return ResponseEntity.ok(new UserDTO(userService.getUserById(id)));
+            Long userId = Long.parseLong(id);
+            return ResponseEntity.ok(userService.getUserById(userId));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body("Invalid ID format please provide a number");
         } catch (UserException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody User user) {
