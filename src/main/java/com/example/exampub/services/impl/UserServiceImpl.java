@@ -19,15 +19,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) throws UserException {
-        Optional<User> user = userRepository.findById(id);
+    public User getUserById(String id) throws UserException {
+        try {
+            Long userId = Long.valueOf(id);
+            Optional<User> user = userRepository.findById(userId);
 
-        if(user.isEmpty()){
-            throw new UserException("User with id " + id + " does not exist");
-        } else {
-            return user.get();
+            if (user.isEmpty()) {
+                throw new UserException("User with id " + userId + " does not exist");
+            } else {
+                return user.get();
+            }
+        } catch (NumberFormatException e) {
+            throw new UserException("Invalid id format put a number please");
         }
     }
+
 
     public User saveUser(User user) {
         return userRepository.save(user);

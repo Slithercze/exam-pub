@@ -22,15 +22,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable String id) {
         try {
-            Long userId = Long.parseLong(id);
-            return ResponseEntity.ok(userService.getUserById(userId));
-        } catch (NumberFormatException e) {
-            return ResponseEntity.badRequest().body("Invalid ID format please provide a number");
+            return ResponseEntity.ok(userService.getUserById(id));
         } catch (UserException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody User user) {
