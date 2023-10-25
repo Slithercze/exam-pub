@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -24,5 +23,4 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_user_id",referencedColumnName = "user_id")
     private List<Order> orders;
-
 }
