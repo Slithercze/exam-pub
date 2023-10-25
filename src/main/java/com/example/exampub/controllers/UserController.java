@@ -3,6 +3,7 @@ package com.example.exampub.controllers;
 import com.example.exampub.DTOs.UserDTO;
 import com.example.exampub.exceptions.UserException;
 import com.example.exampub.models.User;
+import com.example.exampub.services.UserService;
 import com.example.exampub.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<?> getUsers() {
