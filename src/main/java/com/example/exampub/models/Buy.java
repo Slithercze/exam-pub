@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Buy {
     private Long userId;
-    private Long drinkId;
+    private Long productId;
     private boolean price;
 }
