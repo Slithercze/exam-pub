@@ -28,7 +28,7 @@ public class BuyServiceImpl implements BuyService {
             throw new UserException("User with id " + buy.getUserId() + " does not exist");
         } else if (drink.isEmpty()) {
             throw new PurchaseException("Drink with id " + buy.getProductId() + " does not exist");
-        } else if (!user.get().isAdult() && drink.get().isForAdult()){
+        } else if (!user.get().isAdult() && drink.get().isForAdult()) {
             throw new PurchaseException("User with id " + buy.getUserId() + " is not adult");
         } else if (user.get().getPocket() < drink.get().getPrice()) {
             throw new PurchaseException("User with id " + buy.getUserId() + " does not have enough money");
