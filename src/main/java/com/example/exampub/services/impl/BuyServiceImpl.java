@@ -19,6 +19,7 @@ public class BuyServiceImpl implements BuyService {
     private final UserRepository userRepository;
     private final DrinkRepository drinkRepository;
 
+    @Override
     public String buyDrink(Buy buy) throws PurchaseException, UserException {
         Optional<User> user = userRepository.findById(buy.getUserId());
         Optional<Drink> drink = drinkRepository.findById(buy.getProductId());

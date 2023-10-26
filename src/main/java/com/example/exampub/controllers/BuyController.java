@@ -1,6 +1,7 @@
 package com.example.exampub.controllers;
 
 import com.example.exampub.exceptions.PurchaseException;
+import com.example.exampub.exceptions.UserException;
 import com.example.exampub.models.Buy;
 import com.example.exampub.services.BuyService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class BuyController {
     public ResponseEntity<?> buy(@RequestBody Buy buy) {
         try {
             return ResponseEntity.ok(buyService.buyDrink(buy));
-        } catch (PurchaseException e) {
+        } catch (PurchaseException | UserException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

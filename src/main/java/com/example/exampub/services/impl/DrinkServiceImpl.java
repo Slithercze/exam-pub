@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class DrinkServiceImpl implements DrinkService {
     private final DrinkRepository drinkRepository;
 
+    @Override
     public Iterable<Drink> getAllDrinks() {
         return drinkRepository.findAll();
     }

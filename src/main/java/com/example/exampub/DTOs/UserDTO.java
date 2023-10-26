@@ -2,8 +2,10 @@ package com.example.exampub.DTOs;
 
 import com.example.exampub.models.User;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class UserDTO {
     private Long id;
     private String name;
